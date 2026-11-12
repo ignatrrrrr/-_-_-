@@ -1,0 +1,401 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(180deg, #00d2ff 0%, #5b247a 60%, #3b0086 100%);
+    min-height: 100vh;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.main-wrapper {
+    width: 100%;
+    max-width: 520px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+}
+
+.game-title {
+    font-size: 2.4rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
+    padding: 28px 24px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.card h2 {
+    margin-bottom: 18px;
+    font-size: 1.5rem;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: none;
+    font-size: 1rem;
+    margin-bottom: 14px;
+    outline: none;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.92);
+    color: #222;
+    font-weight: 600;
+}
+
+.orange-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #fff;
+    background: #ff7b00;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 6px 0 #b85400, 0 10px 20px rgba(0, 0, 0, 0.35);
+    transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.2s ease;
+}
+
+.orange-btn:hover {
+    background: #ff8c1a;
+}
+
+.orange-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 #b85400, 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Разделитель на главной */
+.divider {
+    margin: 22px 0;
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.divider span {
+    background: #482880;
+    padding: 4px 12px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    position: relative;
+    top: -11px;
+    letter-spacing: 1px;
+}
+
+/* Строка ввода кода и кнопки Войти */
+.join-row {
+    display: flex;
+    gap: 10px;
+}
+
+.code-input {
+    margin-bottom: 0 !important;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    flex: 1;
+}
+
+.join-btn {
+    width: auto;
+    padding: 14px 28px;
+}
+
+.error-msg {
+    background: rgba(255, 59, 59, 0.85);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+/* Сетка лобби: Хозяин сбоку + список игроков */
+.lobby-layout {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.host-box {
+    flex: 1;
+    background: rgba(255, 174, 0, 0.18);
+    border: 1px solid rgba(255, 174, 0, 0.5);
+    border-radius: 14px;
+    padding: 14px;
+}
+
+.guests-box {
+    flex: 1.3;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 14px;
+    padding: 14px;
+}
+
+.box-label {
+    display: block;
+    font-size: 0.82rem;
+    opacity: 0.85;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.host-card {
+    background: rgba(255, 123, 0, 0.35);
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    text-align: center;
+    border: 1px solid rgba(255, 174, 0, 0.6);
+}
+
+.players-list {
+    list-style: none;
+}
+
+.players-list li {
+    background: rgba(255, 255, 255, 0.12);
+    padding: 9px 12px;
+    border-radius: 8px;
+    margin-bottom: 6px;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* Код комнаты */
+.code-container {
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.room-code {
+    margin-top: 8px;
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: 6px;
+    color: #ffae00;
+    background: rgba(0, 0, 0, 0.35);
+    padding: 10px;
+    border-radius: 12px;
+    border: 2px dashed rgba(255, 174, 0, 0.6);
+}
+
+/* Правила внизу лобби */
+.rules-box {
+    background: rgba(0, 0, 0, 0.28);
+    border-radius: 16px;
+    padding: 18px 20px;
+    text-align: left;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.rules-box h3 {
+    text-align: center;
+    margin-bottom: 8px;
+    color: #ffae00;
+}
+
+/* Рекламный блок на главной */
+.ad-banner {
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px dashed rgba(255, 255, 255, 0.35);
+    border-radius: 14px;
+    padding: 22px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+/* Блок кнопки старта / ожидания */
+.start-action-container {
+    margin-bottom: 18px;
+}
+
+.waiting-status {
+    background: rgba(0, 0, 0, 0.25);
+    padding: 14px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #ffae00;
+    border: 1px dashed rgba(255, 174, 0, 0.4);
+    letter-spacing: 0.5px;
+}
+
+/* Анимация мигающих точек «ждём...» */
+.dots span {
+    animation: blink 1.4s infinite both;
+}
+
+.dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes blink {
+    0% { opacity: 0.2; }
+    20% { opacity: 1; }
+    100% { opacity: 0.2; }
+}
+/* --- СТИЛИ ИГРОВОЙ КОМНАТЫ (game.html) --- */
+.game-card {
+    max-width: 600px;
+}
+
+.answer-banner {
+    background: rgba(0, 0, 0, 0.35);
+    padding: 10px 14px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    font-weight: 800;
+    color: #ffae00;
+    border: 1px solid rgba(255, 174, 0, 0.4);
+}
+
+/* Две колонки: слева список со словами, справа кнопки */
+.game-board-layout {
+    display: flex;
+    gap: 16px;
+    text-align: left;
+}
+
+.players-words-column {
+    flex: 1.5;
+    background: rgba(0, 0, 0, 0.22);
+    padding: 14px;
+    border-radius: 14px;
+}
+
+.controls-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.game-players-list {
+    list-style: none;
+}
+
+.player-word-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.12);
+    padding: 10px 14px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.pw-name {
+    font-weight: 800;
+}
+
+.pw-word {
+    color: #ffd966;
+    font-weight: 700;
+}
+
+/* Кругляшки статусов после слов: Зелёный, Жёлтый, Красный */
+.status-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+    margin-left: 10px;
+}
+
+.dot-green {
+    background-color: #00e676;
+    box-shadow: 0 0 10px #00e676;
+}
+
+.dot-yellow {
+    background-color: #ffea00;
+    box-shadow: 0 0 10px #ffea00;
+}
+
+.dot-red {
+    background-color: #ff3d00;
+    box-shadow: 0 0 8px #ff3d00;
+}
+
+/* Правая панель кнопок: ДА / НЕТ сверху, ЗАКОНЧИТЬ снизу */
+.yes-no-box {
+    background: rgba(0, 0, 0, 0.22);
+    padding: 14px;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.action-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.action-btn:active {
+    transform: translateY(3px);
+}
+
+.yes-btn {
+    background: #00c853;
+    box-shadow: 0 4px 0 #008636;
+}
+
+.no-btn {
+    background: #ff3d00;
+    box-shadow: 0 4px 0 #b22a00;
+}
+
+.sub-btn {
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.sub-btn:hover {
+    background: rgba(255, 255, 255, 0.28);
+}
+
+.finish-btn {
+    font-size: 1rem;
+    padding: 13px;
+}

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card" id="lobby-card" data-room="{{ room_code }}" data-username="{{ username }}" data-ishost="{{ 'true' if is_host else 'false' }}">
+    <h2>Комната ожидания</h2>
+
+    <div class="lobby-layout">
+        <div class="host-box">
+            <span class="box-label">👑 Хозяин лобби</span>
+            <div id="host-name" class="host-card">{{ host_name }}</div>
+        </div>
+
+        <div class="guests-box">
+            <span class="box-label">👥 Игроки в комнате</span>
+            <ul id="players-list" class="players-list"></ul>
+        </div>
+    </div>
+
+    <!-- БЛОК УПРАВЛЕНИЯ СТАРТОМ -->
+    <div class="start-action-container">
+        {% if is_host %}
+            <!-- Кнопка видна ТОЛЬКО Хозяину -->
+            <button id="start-game-btn" class="orange-btn">Начать игру</button>
+        {% else %}
+            <!-- Плашка ожидания для остальных игроков -->
+            <div class="waiting-status">
+                Ждём организатора<span class="dots"><span>.</span><span>.</span><span>.</span></span>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="code-container">
+        <span>Код для входа друзей:</span>
+        <div class="room-code">{{ room_code }}</div>
+    </div>
+</div>
+
+<div class="rules-box">
+    <h3>Правила игры</h3>
+    <p>
+        1. Создатель комнаты (Хозяин) передаёт 5-значный код друзьям.<br>
+        2. Когда все вошли, хост нажимает «Начать игру», и каждый загадывает слово.<br>
+        3. Угадывайте слова! Кто первый угадал — нажимает завершение раунда.
+    </p>
+</div>
+{% endblock %}

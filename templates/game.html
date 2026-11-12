@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card game-card" id="game-card" data-room="{{ room_code }}" data-username="{{ username }}">
+    
+    <!-- ФАЗА 1: Загадывание слова -->
+    <div id="word-submit-phase">
+        <h2>Загадай слово</h2>
+        <p class="subtitle">Напиши любое слово — оно достанется кому-то из друзей!</p>
+        
+        <div id="submit-form-box">
+            <input type="text" id="secret-word-input" placeholder="Например: Холодильник..." maxlength="20">
+            <button id="submit-word-btn" class="orange-btn">Отправить слово</button>
+        </div>
+
+        <div id="waiting-others-msg" class="waiting-status" style="display: none;">
+            Слово принято! Ждём остальных игроков (<span id="ready-count">0/0</span>)...
+        </div>
+    </div>
+
+    <!-- ФАЗА 2: Основная игра (Слева игроки со словами, справа кнопки) -->
+    <div id="main-game-phase" style="display: none;">
+        <h2>Угадай своё слово!</h2>
+
+        <!-- Табло последнего ответа (Да / Нет) -->
+        <div id="answer-banner" class="answer-banner">Задавайте вопросы вслух или в чате!</div>
+
+        <div class="game-board-layout">
+            <!-- СЛЕВА: Игроки, двоеточие, их слова и кругляшки (🟢 🟡 🔴) -->
+            <div class="players-words-column">
+                <span class="box-label">Игроки и слова:</span>
+                <ul id="game-players-list" class="game-players-list"></ul>
+            </div>
+
+            <!-- СПРАВА: Сверху ДА / НЕТ, снизу ЗАКОНЧИТЬ -->
+            <div class="controls-column">
+                <div class="yes-no-box">
+                    <span class="box-label">Ответ ведущего:</span>
+                    <button id="btn-yes" class="action-btn yes-btn">ДА</button>
+                    <button id="btn-no" class="action-btn no-btn">НЕТ</button>
+                </div>
+
+                <div class="finish-box">
+                    <button id="btn-finish" class="orange-btn finish-btn">Закончить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ФАЗА 3: Финал (когда нажали Закончить) -->
+    <div id="game-over-phase" style="display: none;">
+        <h2>🎉 Игра окончена!</h2>
+        <p id="winner-text" class="subtitle"></p>
+        <ul id="final-words-list" class="game-players-list" style="margin-bottom: 20px;"></ul>
+        <a href="/room/{{ room_code }}" class="orange-btn" style="display: block; text-decoration: none;">Вернуться в лобби</a>
+    </div>
+
+</div>
+{% endblock %}

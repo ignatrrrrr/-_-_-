@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h2>Главное меню</h2>
+
+    {% if error %}
+        <div class="error-msg">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST" class="menu-section">
+        <!-- ЕДИНСТВЕННОЕ ПОЛЕ НИКА (сохраняется автоматически) -->
+        <input 
+            type="text" 
+            id="username-input" 
+            name="username" 
+            value="{{ saved_username }}" 
+            placeholder="Введи свой ник..." 
+            maxlength="15" 
+            required
+        >
+
+        <!-- Кнопка 1: Отправляет форму на /create -->
+        <button type="submit" formaction="/create" class="orange-btn">Создать комнату</button>
+
+        <div class="divider"><span>ИЛИ ПРИСОЕДИНИТЬСЯ</span></div>
+
+        <!-- Кнопка 2: Отправляет эту же форму (с тем же ником) на /join -->
+        <div class="join-row">
+            <input 
+                type="text" 
+                id="room-code-input"
+                name="room_code" 
+                placeholder="КОД (5 симв.)" 
+                maxlength="5" 
+                class="code-input"
+            >
+            <button type="submit" formaction="/join" id="join-btn" class="orange-btn join-btn">Войти</button>
+        </div>
+    </form>
+</div>
+
+<!-- Блок под будущую рекламу -->
+<div class="ad-banner">
+    <span>Место для рекламы (Google AdSense / РСЯ)</span>
+</div>
+{% endblock %}
